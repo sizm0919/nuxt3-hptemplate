@@ -1,0 +1,28 @@
+# Created by https://www.toptal.com/developers/gitignore/api/nuxtjs,vuejs
+# Edit at https://www.toptal.com/developers/gitignore?templates=nuxtjs,vuejs
+
+### NuxtJS ###
+# Generated dirs
+dist
+.nuxt
+.nuxt-*
+.output
+.gen
+.env
+.DS_Store
+
+# Node dependencies
+node_modules
+
+# System files
+*.log
+
+### Vuejs ###
+# Recommended template: Node.gitignore
+
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# End of https://www.toptal.com/developers/gitignore/api/nuxtjs,vuejs

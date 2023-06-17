@@ -1,0 +1,33 @@
+version: 0.2
+# GitHub -> CodeBuild -> S3 -> CloudFront
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo update npm...
+      - n 16
+      - npm update -g npm
+      - echo node -v
+      - node -v
+      - echo npm -v
+      - npm -v
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+  build:
+    commands:
+      - echo build start
+      - npx nuxt generate
+      - echo build completed
+  post_build:
+    commands:
+      - echo Delete S3 Bucket object...
+      #- aws s3 rm s3://sample --recursive //ここのARM名を変更する。
+      # - echo create invalidation
+      # - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist'
